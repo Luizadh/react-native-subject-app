@@ -1,92 +1,60 @@
-import { useState } from 'react'
-import { ScrollView } from 'react-native'
-import { Button } from '../../components/Button'
-import { Header } from '../../components/Header'
-import { Input } from '../../components/Input'
-import { Container } from './styles'
-import { InputAmount } from '../../components/InputAmount'
-import { InputDate } from '../../components/InputDate'
-import { spendingCreate }
-  from '../../storage/spending/spendingCreate'
-
-import { spendingGetAll }
-  from '../../storage/spending/spendingGetAll'
+import { useState } from 'react';
+import { ScrollView } from 'react-native';
+import { Button } from '../../components/Button';
+import { Header } from '../../components/Header';
+import { Input } from '../../components/Input';
+import { Container } from './styles';
+import { create, getAll } from '../../storage/subject/subject-storage';
 
 export function Dashboard() {
+  const [code, setCode] = useState('');
+  const [subject, setSubject] = useState('');
+  const [hours, setHours] = useState('');
 
-  const [name, setName] = useState('')
-  const [amount, setAmount] = useState('')
-  const [datePurchase, setDatePurchase] = useState('')
-  const [category, setCategory] = useState('')
-  const [local, setLocal] = useState('')
-
-  async function handleAddNewSpending() {
+  async function handleAddNewSubject() {
     const data = {
-      name,
-      amount,
-      datePurchase,
-      category,
-      local
-    }
+      code,
+      subject,
+      hours,
+    };
 
-    await spendingCreate(data)
-    const result = await spendingGetAll()
-    console.log(result)
+    await create(data);
+    const result = await getAll();
+    console.log(result);
 
-    setName('')
-    setAmount('')
-    setDatePurchase('')
-    setCategory('')
-    setLocal('')
+    setCode('');
+    setSubject('');
+    setHours('');
   }
 
   return (
-    <Container
-    >
-      <Header title='Controle de Gastos' />
+    <Container>
+      <Header title='Cadastro da Disciplina' />
 
       <ScrollView>
         <Input
-          placeholder='Descrição'
+          placeholder='Código'
           placeholderTextColor='#363F5F'
-          value={name}
-          onChangeText={value => setName(value)}
-        />
-
-        <InputAmount
-          placeholder='Valor'
-          placeholderTextColor='#363F5F'
-          value={amount}
-          onChangeText={value => setAmount(value)}
-        />
-
-        <InputDate
-          placeholder='Data Compra'
-          placeholderTextColor='#363F5F'
-          value={datePurchase}
-          onChangeText={value => setDatePurchase(value)}
+          value={code}
+          onChangeText={(value) => setCode(value)}
         />
 
         <Input
-          placeholder='Categoria'
+          placeholder='Disciplina'
           placeholderTextColor='#363F5F'
-          value={category}
-          onChangeText={value => setCategory(value)}
+          value={subject}
+          onChangeText={(value) => setSubject(value)}
         />
 
         <Input
-          placeholder='Local da Compra'
+          placeholder='Carga horária'
           placeholderTextColor='#363F5F'
-          value={local}
-          onChangeText={value => setLocal(value)}
+          value={hours}
+          onChangeText={(value) => setHours(value)}
         />
       </ScrollView>
 
-      <Button
-        title='Adicionar'
-        onPress={handleAddNewSpending}
-      />
-
+      <Button title='Adicionar' onPress={handleAddNewSubject} />
     </Container>
-  )
+  );
 }

@@ -1,3 +1,3 @@
-const SPENDING_COLLECTION = '@myapp:spending'
+const SUBJECT_COLLECTION = '@myapp:subject';
 
-export { SPENDING_COLLECTION }
+export { SUBJECT_COLLECTION };
