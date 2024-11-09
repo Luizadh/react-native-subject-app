@@ -1,0 +1,4 @@
+npm i --force
+
+npx expo start 
+
