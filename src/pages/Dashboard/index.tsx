@@ -5,6 +5,7 @@ import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Container } from './styles';
 import { create, getAll } from '../../storage/subject/subject-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Dashboard() {
   const [code, setCode] = useState('');

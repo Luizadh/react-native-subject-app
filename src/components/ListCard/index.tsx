@@ -1,24 +1,19 @@
-import { TouchableOpacityProps } from 'react-native'
+import { Container, ButtonCard, TextCard } from './styles';
+import { SubjectDto } from '../../storage/subject/subject-storage';
 
-import {
-    Container,
-    ButtonCard,
-    TextCard
-} from './styles'
+type Props = {
+  subject: SubjectDto;
+};
 
-export function ListCard() {
-    return (
-        <Container>
-            <ButtonCard>
-                <TextCard>Dados do Gastos</TextCard>
-                <TextCard>Descrição:</TextCard>
-                <TextCard>Valor: </TextCard>
-                <TextCard>Data da Compra: </TextCard>
-                <TextCard>Categoria: </TextCard>
-                <TextCard>Local da Compra:</TextCard>
-            </ButtonCard>
-        </Container>
-    )
+export function ListCard({ subject }: Props) {
+  return (
+    <Container>
+      <ButtonCard>
+        <TextCard>Disciplina</TextCard>
+        <TextCard>Código: {subject.code}</TextCard>
+        <TextCard>Disciplina: {subject.subject}</TextCard>
+        <TextCard>Carha Horária: {subject.hours}</TextCard>
+      </ButtonCard>
+    </Container>
+  );
 }
-
-

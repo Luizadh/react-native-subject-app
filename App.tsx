@@ -11,7 +11,7 @@ import {
 
 import theme from './src/global/styles/theme';
 import { Dashboard } from './src/pages/Dashboard';
-import { ListExpenses } from './src/pages/ListExpenses';
+import { ListExpenses } from './src/pages/ListSubjects';
 import { SearchExpenses } from './src/pages/SearchExpenses';
 import { Routes } from './src/routes';
 
